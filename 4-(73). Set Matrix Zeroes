@@ -1,0 +1,56 @@
+                                                      Using HashSet
+                 On traversing each row and column, whenever we encounter any row or column element having zero,we store its location in HashSet.
+                                                    Time Complexity:O(nsquare)
+                                                    Space Complexity:O(2n)=O(n)
+                 
+                 
+                 
+                 
+                 class Solution {
+    public void setZeroes(int[][] matrix) {
+        HashSet<Integer> row=new HashSet<>();
+        HashSet<Integer> col=new HashSet<>();
+        for(int i=0;i<matrix.length;i++)
+        {
+            for(int j=0;j<matrix[i].length;j++)
+            {
+                if(matrix[i][j]==0)
+                {
+                    row.add(i);
+                    col.add(j);
+                }
+            }
+        }
+        for(int i=0;i<matrix.length;i++)
+        {
+            if(row.contains(i))
+            {
+                removeRows(i,matrix);
+            }
+        }
+        for(int i=0;i<matrix[0].length;i++)
+        {
+            if(col.contains(i))
+            {
+                removeCols(i,matrix);
+            }
+        }
+    }
+    private void removeRows(int index,int arr[][])
+    {
+        for(int i=0;i<arr[0].length;i++)
+        {
+            arr[index][i]=0;
+        }
+    }
+     private void removeCols(int index,int arr[][])
+    {
+        for(int i=0;i<arr.length;i++)
+        {
+            arr[i][index]=0;
+        }
+    }
+    
+        
+        
+    }
