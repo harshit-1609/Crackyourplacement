@@ -1,0 +1,25 @@
+  We ought to use a two-pointer approach here. One, that would keep track of the current element in the original array and another one for just the unique elements.
+  
+  
+                                                                             Time Complexity:O(n)
+                                                                            Space Complexity:O(1)
+                                                                            
+                                                                            
+    class Solution {
+    public int removeDuplicates(int[] nums) {
+        if(nums.length==0)
+        {
+            return 0;
+        }
+        int j=0;
+        for(int i=1;i<nums.length;i++)
+        {
+            if(nums[i]!=nums[j])
+            {
+                j++;
+                nums[j]=nums[i];
+            }
+        }
+        return j+1;
+    }
+}                                   
