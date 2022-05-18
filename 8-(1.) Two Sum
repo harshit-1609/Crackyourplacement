@@ -1,0 +1,26 @@
+     Using HashMap
+                         
+          Time Complexity:O(N)
+          Space Complexity:O(1)
+                                                       
+                                                       
+        class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        int result[]=new int[2];
+        HashMap<Integer,Integer> hs=new HashMap<>();
+        for(int i=0;i<nums.length;i++)
+        {
+            if(hs.containsKey(nums[i]))
+            {
+                int x=hs.get(nums[i]);
+                result[0]=x;
+                result[1]=i;
+            }
+            else
+            {
+                hs.put(target-nums[i],i);
+            }
+        }
+        return result;
+    }
+}
