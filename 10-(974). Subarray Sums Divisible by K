@@ -1,0 +1,40 @@
+
+          Time Complexity:O(N)
+          Space Complexity:O(N)
+          
+          
+          Tip:If the number is negative,add k to it,to make it divisible
+
+
+
+
+
+   class Solution {
+    public int subarraysDivByK(int[] nums, int k) {
+        int ans=0;
+        HashMap<Integer,Integer> hs=new HashMap<>();
+        hs.put(0,1);
+        int sum=0;
+        int rem=0;
+        for(int i=0;i<nums.length;i++)
+        {
+            sum+=nums[i];
+            rem=sum%k;
+            if(rem<0)
+            {
+                rem+=k;
+            }
+            if(hs.containsKey(rem))
+            {
+               ans+=hs.get(rem);
+                hs.put(rem,hs.get(rem)+1);
+            }
+            else
+            {
+                hs.put(rem,1);
+            }
+        }
+        return ans;
+        
+    }
+}
