@@ -1,0 +1,36 @@
+
+                      Time Complexity:O(N)
+                      Space Complexity:O(N)
+
+
+
+
+
+class Solution {
+    public List<Integer> findDuplicates(int[] nums) {
+        ArrayList<Integer> ans=new ArrayList<>();
+        HashMap<Integer,Integer> hs=new HashMap();
+        for(int i=0;i<nums.length;i++)
+        {
+            if(hs.containsKey(nums[i]))
+            {
+                int old=hs.get(nums[i]);
+                int now=old+1;
+                hs.put(nums[i],now);
+            }
+            else
+            {
+                hs.put(nums[i],1);
+            }
+        }
+        for(int i:hs.keySet())
+        {
+            int count=hs.get(i);
+            if(count==2)
+            {
+            ans.add(i);
+            }
+        }
+        return ans;
+    }
+}
