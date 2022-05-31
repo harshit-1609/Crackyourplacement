@@ -1,0 +1,21 @@
+class Solution {
+    public ListNode removeElements(ListNode head, int val) {
+        ListNode temp=head;
+        while(head!=null && head.val==val)
+        {
+            head=head.next;//for removing the val if present in beginning
+        }
+        while(temp!=null && temp.next!=null)//it starts checking from second value because first value has already been checked
+        {
+            if(temp.next.val==val)
+            {
+                temp.next=temp.next.next;//jump of 1 to remove element whoose value is equal to "val"
+            }
+            else
+            {
+                temp=temp.next;
+            }
+        }
+        return head;
+    }
+}
